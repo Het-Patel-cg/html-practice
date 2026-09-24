@@ -1,12 +1,330 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=
-    , initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel. - Must see Places</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: radial-gradient(circle at 50% 30%, #eef0ea 0%, #e3e8e6 45%, #d6ddd8 100%);
+      color: #1a153a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-x: hidden;
+      padding: 32px 56px;
+    }
+
+    
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      gap: 32px;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #1a153a;
+      text-decoration: none;
+    }
+
+    .header-center {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #71757e;
+    }
+
+    .header-nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    .header-nav a {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #1a153a;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .header-nav a:hover {
+      opacity: 0.7;
+    }
+
+    
+    main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      margin: 40px 0;
+    }
+
+    .hero-content {
+      max-width: 380px;
+      flex-shrink: 0;
+    }
+
+    .hero-content h1 {
+      font-size: 64px;
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      color: #18113c;
+      margin-bottom: 24px;
+    }
+
+    .hero-content p {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: #6d6f7c;
+      margin-bottom: 32px;
+    }
+
+    .btn-explore {
+      display: inline-block;
+      padding: 14px 38px;
+      background: linear-gradient(90deg, #ff416c, #ff4b2b);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(255, 65, 108, 0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-explore:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(255, 65, 108, 0.45);
+    }
+
+
+    .cards-wrapper {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      overflow: hidden;
+      padding: 10px 0;
+    }
+
+    .card {
+      position: relative;
+      width: 250px;
+      height: 380px;
+      border-radius: 6px;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,0.8) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 22px 20px;
+      color: #fdfdfd;
+    }
+
+    .card-title {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .card-location {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: #e2e8f0;
+    }
+
+    .card-location i {
+      color: #ff4757;
+      font-size: 10px;
+    }
+
+    
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 18px;
+    }
+
+    .social-links a {
+      color: #2b293d;
+      font-size: 13px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .social-links a:hover {
+      color: #ff416c;
+    }
+
+    .footer-center {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #71757e;
+    }
+
+    .footer-right {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .counter {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #3b3a4a;
+    }
+
+    .slider-arrows {
+      display: flex;
+      gap: 10px;
+    }
+
+    .arrow-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #4b4958;
+      cursor: pointer;
+      font-size: 11px;
+      transition: all 0.2s ease;
+    }
+
+    .arrow-btn:hover {
+      background: rgba(0, 0, 0, 0.05);
+      border-color: #1a153a;
+      color: #1a153a;
+    }
+  </style>
 </head>
 <body>
-    <h2> welcome to html vercel class</h2>
+
+  
+  <header>
+    <a href="#" class="logo">travel.</a>
+    <div class="header-center">CARD SLIDER FOR WORDPRESS</div>
+    <nav class="header-nav">
+      <a href="#">ABOUT</a>
+      <a href="#">CONTACT</a>
+    </nav>
+  </header>
+
+  
+  <main>
+    <div class="hero-content">
+      <h1>Must see<br>Places</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum metus eu enim rhoncus posuere.</p>
+      <a href="#" class="btn-explore">Explore</a>
+    </div>
+
+    <div class="cards-wrapper">
+      
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?auto=format&fit=crop&w=600&q=80" alt="Cappadocia">
+        <div class="card-overlay">
+          <h3 class="card-title">Cappadocia</h3>
+          <span class="card-location"><i class="fa-solid fa-location-dot"></i> TURKEY</span>
+        </div>
+      </div>
+
+      
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=600&q=80" alt="Santorini">
+        <div class="card-overlay">
+          <h3 class="card-title">Santorini</h3>
+          <span class="card-location"><i class="fa-solid fa-location-dot"></i> GREECE</span>
+        </div>
+      </div>
+
+      
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=600&q=80" alt="Bali">
+        <div class="card-overlay">
+          <h3 class="card-title">Bali</h3>
+          <span class="card-location"><i class="fa-solid fa-location-dot"></i> INDONESIA</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  
+  <footer>
+    <div class="social-links">
+      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#"><i class="fa-brands fa-youtube"></i></a>
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+
+    <div class="footer-center">UNIQUE DESTINATIONS</div>
+
+    <div class="footer-right">
+      <span class="counter">01 &nbsp;/&nbsp; 03</span>
+      <div class="slider-arrows">
+        <button class="arrow-btn" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="arrow-btn" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>
